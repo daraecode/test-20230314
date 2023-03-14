@@ -4,7 +4,7 @@ import MainPageComponent from "./main";
 
 function App() {
   return (
-    <MainPageComponent />
+    <MainPageComponent></MainPageComponent>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
