@@ -1,41 +1,46 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import MainPageComponent from "./main";
+import { Switch, Route, Link, useHistory } from "react-router-dom";
 import UploadPage from "./upload";
 import ProductPage from "./product";
-import { Switch, Route } from "react-router-dom";
+import { Button } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
+
 function App() {
+  const history = useHistory();
   return (
-    // <MainPageComponent></MainPageComponent>
     <div>
-      <Switch>
-        <Route exact={true} path={"/"}>
-          <MainPageComponent />
-        </Route>
-        <Route exact={true} path="/upload">
-          <UploadPage />
-        </Route>
-        <Route exact={true} path="/products/:id">
-          <ProductPage />
-        </Route>
-      </Switch>
+      <div id="header">
+        <div id="header-area">
+          <Link to={"/"}>
+            <img src="/images/icons/logo.png" />
+          </Link>
+          <Button
+            size="large"
+            onClick={function () {
+              history.push("/upload");
+            }}
+            icon={<DownloadOutlined />}
+          >
+            업로드
+          </Button>
+        </div>
+      </div>
+      <div id="body">
+        <Switch>
+          <Route exact={true} path="/">
+            <MainPageComponent />
+          </Route>
+          <Route exact={true} path="/products/:id">
+            <ProductPage />
+          </Route>
+          <Route exact={true} path="/upload">
+            <UploadPage />
+          </Route>
+        </Switch>
+      </div>
+      <div id="footer"></div>
     </div>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 
